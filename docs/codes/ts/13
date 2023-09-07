@@ -1,0 +1,9 @@
+export const createInteraction = (req: Request, res) => {
+  const interaction = new Interaction(req.body);
+  listInteraction.push(interaction);
+
+  const { command, message } = interaction;
+  bot.command(command, (ctx) => ctx.reply(message));
+
+  res.json({ ok: "success" });
+};

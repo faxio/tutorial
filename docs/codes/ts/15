@@ -1,0 +1,23 @@
+import { Telegraf } from "telegraf";
+import { Interaction } from "../models/Interaction";
+import { Request, Response } from "express";
+
+const bot = new Telegraf(process.env.TOKEN_BOT_TELEGRAM!);
+
+const listInteraction: Interaction[] = [];
+
+export const createInteraction = (req: Request, res: Response) => {
+  const interaction = new Interaction(req.body);
+  listInteraction.push(interaction);
+
+  const { command, message } = interaction;
+  bot.command(command, (ctx) => ctx.reply(message));
+
+  return res.json({ ok: "success" });
+};
+
+export const getAllInteractions = (req: Request, res: Response) => {
+  res.json({ ok: "success", data: listInteraction });
+};
+
+bot.launch();

@@ -1,0 +1,11 @@
+app.post('/api/command', (req: Request, res) => {
+  // Creamos el objeto e insertamos en la lista
+  const interaction = new Interaction(req.body);
+  listInteraction.push(interaction);
+
+  // Ahora podemos desesctructurar la interacción
+  const { command, message } = interaction;
+  bot.command(command, (ctx) => ctx.reply(message));
+
+  res.json({ ok: 'success' });
+});

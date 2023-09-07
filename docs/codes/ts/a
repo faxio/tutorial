@@ -1,0 +1,3 @@
+function salute3(): void {
+  console.log("Hello World");
+}

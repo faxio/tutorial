@@ -1,0 +1,3 @@
+import { createInteraction } from "./controllers/Interaction.route";
+
+app.post("/api/command", createInteraction);

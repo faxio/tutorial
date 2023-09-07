@@ -1,0 +1,8 @@
+export const getOneInteraction = (req: Request, res: Response) => {
+  // Al hacer uso de /:command ->
+  // El valor de command se encuentra en req.params.command
+  const { command } = req.params;
+  // find recorre elemento por elemento hasta que la condición sea verdadera
+  const commandFinded = listInteraction.find((i) => i.command === command);
+  res.json({ ok: "success", data: commandFinded });
+};

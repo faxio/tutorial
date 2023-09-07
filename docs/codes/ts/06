@@ -1,0 +1,4 @@
+app.post('/api/command', (req: Request, res) => {
+  const { command, message } = req.body;
+  res.json({ command, message });
+});

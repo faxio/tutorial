@@ -1,0 +1,2 @@
+router.post('/command', createInteraction);
+router.get('/commands', getAllInteractions);

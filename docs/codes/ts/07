@@ -1,0 +1,25 @@
+import express, { Request } from 'express';
+import { Telegraf } from 'telegraf'; // Importamos telegraf
+import 'dotenv/config'; // importamos los datos del .env
+
+// Uitilizamos la variable que tiene el token (.env) y
+// creamos una instancia del bot con el token
+const bot = new Telegraf(process.env.TOKEN_BOT_TELEGRAM!);
+
+const app = express();
+app.use(express.json());
+const port = 3000;
+
+app.post('/api/command', (req: Request, res) => {
+  const { command, message } = req.body;
+  // Crear la interacción con el comando y el mensaje
+  bot.command(command, (ctx) => ctx.reply(message));
+  // Podemos mandar un mensaje de confirmación de que todo resultó bien
+  res.json({ ok: 'success' });
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
+// Corremos el bot
+bot.launch();

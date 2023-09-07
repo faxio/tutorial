@@ -1,0 +1,5 @@
+// Definir el método GET.
+app.get("/api/commands", (req, res) => {
+  //Enviar la lista de interacciones
+  res.json({ ok: "success", data: listInteraction });
+});

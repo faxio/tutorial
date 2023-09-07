@@ -1,0 +1,17 @@
+import express from "express";
+import "dotenv/config";
+import {
+  createInteraction,
+  getAllInteractions,
+} from "./controllers/InteractionController";
+
+const app = express();
+app.use(express.json());
+const port = 3000;
+
+app.post("/api/command", createInteraction);
+app.get("/api/commands", getAllInteractions);
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
